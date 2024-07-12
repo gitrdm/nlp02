@@ -32,29 +32,12 @@ RUN R -e "pak::pkg_install(c('tidygraph'), dependencies=TRUE)"
 RUN R -e "pak::pkg_install(c('igraph'), dependencies=TRUE)"
 RUN R -e "pak::pkg_install(c('tidytext'), dependencies=TRUE)"
 
-# Other Dockerfile commands...
+# Create a new user 'rstudio' with a home directory and bash shell
+# RUN useradd rstudio
 
-# Copy the entrypoint script into the container
-# COPY entrypoint.sh /usr/local/bin/entrypoint.sh
-
-# Make the entrypoint script executable
-# RUN chmod +x /usr/local/bin/entrypoint.sh
-
-# Set the entrypoint script to be executed when the container starts
-# ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
-
-# Specify the default command (this can be overridden)
-# CMD ["/bin/bash"]
-
-# Copy the current directory contents into the container at /workspace
-#COPY . /workspace
-
-# Install any additional dependencies or perform further setup
-
-# Verify Java installation
-# RUN java -version
-
-
-
-# Specify any default command or entry point; for example, starting a shell
-#CMD ["/bin/bash"]
+# Set the password for the 'rstudio' user to 'password'
+RUN echo 'rstudio:1234' | chpasswd
+#RUN wget https://rstudio.org/links/github-copilot
+#RUN tar -xzf copilot-rstudio-extension.tar.gz -C /path/to/rstudio/extensions
+# Set copilot-enabled=1 in /etc/rstudio/rsession.conf
+#RUN echo "copilot-enabled=1" >> /etc/rstudio/rsession.conf

@@ -1,0 +1,21 @@
+{
+  "name": "My R Service",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "my_r_service",
+  "workspaceFolder": "/home/rstudio",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash",
+        "extensions": [
+          "ms-vscode-remote.remote-containers"
+        ]
+      }
+    }
+  },
+  "forwardPorts": [
+    8787
+  ],
+  "postCreateCommand": "echo 'Container started'",
+  "shutdownAction": "stopCompose"
+}
